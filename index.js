@@ -3,8 +3,9 @@ require("dotenv").config();
 const logger = require("./modules/logger");
 const chatgpt = require("./modules/gpt");
 const slack = require("./modules/slack");
+const functions = require("@google-cloud/functions-framework");
 
-exports.handler = async (req, res) => {
+functions.http("handler", async (req, res) => {
   const body = req.body;
   const headers = req.headers;
   const event = req.body.event;
@@ -38,7 +39,7 @@ exports.handler = async (req, res) => {
     logger.error(error);
     res.status(500).send();
   }
-};
+});
 
 function convertToQuestion(text) {
   if (!text) return "";
