@@ -22,6 +22,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
+      - id: 'auth service account 1'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: 'projects/452109328997/locations/global/workloadIdentityPools/my-ci-pool/providers/my-ci-provider'
+          service_account: 'my-ci-account@ornate-unity-374415.iam.gserviceaccount.com'
 
       - name: Setup Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
