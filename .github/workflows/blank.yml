@@ -43,4 +43,4 @@ jobs:
         run: gcloud config set functions/region asia-northeast1
 
       - name: Deploy Functions
-        run: gcloud functions deploy function-1 --runtime nodejs18 --timeout 540 --entry-point handler --trigger-http
+        run: gcloud functions deploy ask-gpt-function --runtime nodejs18 --timeout 540 --entry-point handler --trigger-http
